@@ -1,17 +1,22 @@
+// server.js
+// load the things we need
 var express = require('express');
-var app = module.exports = express.createServer();
-var viewEngine = 'jade'; // modify for your view engine
-app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', viewEngine);
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+var app = express();
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// use res.render to load up an ejs view file
+
+// index page 
+app.get('/', function(req, res) {
+    res.render('pages/index');
 });
-app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
+// about page 
+app.get('/about', function(req, res) {
+    res.render('pages/about');
 });
-app.configure('production', function(){
-  app.use(express.errorHandler());
-});
+
+app.listen(process.env.PORT, process.env.IP);
+console.log(process.env.PORT + 'is the magic port');

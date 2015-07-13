@@ -1,1 +1,8 @@
-//todo {name = c9-node}
+{
+  "name": "c9-node",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "express": "^4.6.1"
+  }
+}
